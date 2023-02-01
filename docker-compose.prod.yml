@@ -1,0 +1,8 @@
+version: '3'
+services:
+    astro:
+        build:
+            target: prod
+    fastify:
+        build:
+            target: prod

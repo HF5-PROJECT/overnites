@@ -1,0 +1,12 @@
+version: '3'
+services:
+    astro:
+        build:
+            target: dev
+        volumes:
+            - './web:/usr/src/app'
+    fastify:
+        build:
+            target: dev
+        volumes:
+            - './api:/usr/src/app'
