@@ -25,6 +25,15 @@ services:
             - network
         volumes:
             - './nginx/default.conf:/etc/nginx/conf.d/default.conf'
+        depends_on:
+            - astro
+            - fastify
+    redis:
+        image: redis:7.0-bullseye
+        restart: always
+        ports:
+        - '127.0.0.1:6379:6379'
+        command: redis-server --loglevel warning
     astro:
         restart: unless-stopped
         build:
@@ -32,6 +41,8 @@ services:
             dockerfile: 'Dockerfile'
         networks:
             - network
+        depends_on:
+            - fastify
     fastify:
         restart: unless-stopped
         build:
@@ -39,6 +50,9 @@ services:
             dockerfile: 'Dockerfile'
         networks:
             - network
+        depends_on:
+            - mariadb
+            - redis
 networks:
     network:
         driver: bridge
