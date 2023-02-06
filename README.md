@@ -6,21 +6,6 @@ All the containers run on their own seperated network. The network is configured
 ### Usage
 We have 2 docker compose configuration files, 1 for developing and 1 for production.
 
-#### Production
-##### Logs
-```bash
-docker-compose -f docker-compose.yml -f docker-compose.prod.yml logs -f astro
-```
-```bash
-docker-compose -f docker-compose.yml -f docker-compose.prod.yml logs -f fastify
-```
-```bash
-docker-compose -f docker-compose.yml -f docker-compose.prod.yml logs -f nginx
-```
-```bash
-docker-compose -f docker-compose.yml -f docker-compose.prod.yml logs -f mariadb
-```
-
 #### Development
 ##### Start
 ```bash
