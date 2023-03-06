@@ -6,6 +6,13 @@ All the containers run on their own seperated network. The network is configured
 ### Usage
 We have 2 docker compose configuration files, 1 for developing and 1 for production.
 
+#### Production
+##### Start
+```bash
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build 
+```
+
+
 #### Development
 ##### Start
 ```bash

@@ -1,8 +1,29 @@
 version: '3'
 services:
+
+    mariadb:
+        restart: unless-stopped
+        image: 'mariadb:10'
+        ports:
+            - '127.0.0.1:3306:3306'
+        environment:
+            MYSQL_ROOT_PASSWORD: 'root'
+            MYSQL_ROOT_HOST: "%"
+            MYSQL_DATABASE: 'overnites'
+            MYSQL_USER: 'user'
+            MYSQL_PASSWORD: 'password'
+        volumes:
+            - 'mariadb:/var/lib/mysql'
+            - './mariadb/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d'
+        networks:
+            - network
     astro:
         build:
             target: prod
     fastify:
         build:
             target: prod
+
+volumes:
+    mariadb:
+        driver: local

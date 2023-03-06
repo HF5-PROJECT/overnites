@@ -38,6 +38,8 @@ services:
             - network
         depends_on:
             - redis
+
+            
 networks:
     network:
         driver: bridge
